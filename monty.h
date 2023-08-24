@@ -39,4 +39,8 @@ extern int data;
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void arg_check(char **argv);
+void file_err(FILE *file, char **argv);
+void matcher(instruction_t *match, char *token, stack_t **stack, int line_no);
+void malloc_err(stack_t **ptr);
 #endif

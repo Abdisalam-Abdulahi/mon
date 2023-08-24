@@ -3,6 +3,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
     stack_t *temp = malloc(sizeof(stack_t));
+    malloc_err(&temp);
     temp->n = data;
     if (*stack == NULL) 
     {
