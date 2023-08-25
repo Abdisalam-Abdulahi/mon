@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include<sys/types.h>
+#include <stdbool.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -16,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 
@@ -32,8 +34,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 extern int data;
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
@@ -43,4 +45,6 @@ void arg_check(char **argv);
 void file_err(FILE *file, char **argv);
 void matcher(instruction_t *match, char *token, stack_t **stack, int line_no);
 void malloc_err(stack_t **ptr);
+bool isNumber(char *string);
+void push_err(int lineNumber);
 #endif
