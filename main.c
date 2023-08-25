@@ -15,9 +15,10 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	char *token1, *token2;
 	FILE  *fptr;
 	stack_t **stack = malloc(sizeof(stack_t));
-	instruction_t match[3] = {
+	instruction_t match[4] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
