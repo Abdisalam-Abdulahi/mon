@@ -43,6 +43,8 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 			if (token2 == NULL && strcmp(token1, "push") == 0)
 				push_err(line_no);
 		}
+		if (token1 == NULL)
+			continue;
 		matcher(match, token1, stack, line_no);
 	}
 	fclose(fptr);
