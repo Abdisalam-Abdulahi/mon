@@ -33,7 +33,7 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		if (token1 != NULL)
 		{
 			token2 = strtok(NULL, " \n\t\r");
-			if (token2 != NULL)
+			if (token2 != NULL && strcmp(token1, "push") == 0)
 			{
 				if (!isNumber(token2))
 					push_err(line_no);
