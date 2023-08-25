@@ -14,7 +14,8 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	int line_no = 0;
 	char *token1, *token2;
 	FILE  *fptr;
-	stack_t **stack = malloc(sizeof(stack_t));
+/*	stack_t *stack = malloc(sizeof(stack_t));*/
+	stack_t *stack = NULL;
 	instruction_t match[4] = {
 		{"push", push},
 		{"pall", pall},
@@ -23,7 +24,8 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	};
 
 	arg_check(argv);
-	malloc_err(stack);
+/*	if (stack == NULL)
+		malloc_err();*/
 	fptr = fopen(argv[1], "r");
 	file_err(fptr, argv);
 	while (getline(&lineptr, &n, fptr) != -1)
@@ -45,10 +47,12 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		}
 		if (token1 == NULL)
 			continue;
-		matcher(match, token1, stack, line_no);
+		matcher(match, token1, &stack, line_no);
+		free(lineptr);
+		lineptr = NULL;
 	}
 	fclose(fptr);
-
+	exit_free(stack, lineptr);
 	return (0);
 }
 
@@ -77,4 +81,23 @@ void matcher(instruction_t *match, char *token, stack_t **stack, int line_no)
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, token);
 		exit(EXIT_FAILURE);
 	}
+}
+
+void free_stack(stack_t *stack)
+{
+        stack_t *temp;
+
+        while (stack != NULL)
+        {
+                temp = stack->next;
+                free(stack);
+                stack = temp;
+        }
+}
+
+void exit_free(stack_t *stack, char *lineptr)
+{
+        if (lineptr != NULL)
+                free(lineptr);
+        free_stack(stack);
 }

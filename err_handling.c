@@ -29,13 +29,10 @@ void file_err(FILE *file, char **argv)
   *malloc_err - checks if malloc is returning error or not
   *@ptr: the pointer to be checked
   */
-void malloc_err(stack_t **ptr)
+void malloc_err(void)
 {
-	if (ptr == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
 }
 /**
   *push_err - prints error when push has not argument or

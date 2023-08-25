@@ -45,7 +45,9 @@ void pint(stack_t **stack, unsigned int line_number);
 void arg_check(char **argv);
 void file_err(FILE *file, char **argv);
 void matcher(instruction_t *match, char *token, stack_t **stack, int line_no);
-void malloc_err(stack_t **ptr);
+void malloc_err(void);
 bool isNumber(char *string);
 void push_err(int lineNumber);
+void free_stack(stack_t *stack);
+void exit_free(stack_t *stack, char *lineptr);
 #endif

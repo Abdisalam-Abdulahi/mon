@@ -7,8 +7,9 @@
 void push(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 {
 	stack_t *temp = malloc(sizeof(stack_t));
-
-	malloc_err(&temp);
+	
+	if (temp == NULL)
+		malloc_err();
 	temp->n = data;
 	if (*stack == NULL)
 	{
