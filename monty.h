@@ -10,14 +10,13 @@
 
 /**
  * struct GlobalStruct - contains all globals
- * @data: int for push
- * @fm: file stream for monty file
+ * @fptr: file stream for monty file
  * @lineptr: pointer to char sting allocated by getline function
  */
 struct GlobalStruct
 {
-        FILE *fptr;
-        char *lineptr;
+	FILE *fptr;
+	char *lineptr;
 } globes;
 
 /**

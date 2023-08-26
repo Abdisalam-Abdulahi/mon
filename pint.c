@@ -6,19 +6,13 @@
   */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	        stack_t *tmp = *stack;
+	stack_t *tmp = *stack;
 
-        if (tmp == NULL)
-        {
-                fprintf(stderr, "L%d: can't pint, stack empty", line_number);
-                exit_free(*stack);
-                exit(EXIT_FAILURE);
-        }
-        printf("%d\n", tmp->n);
-/*	if (*stack == NULL)
+	if (tmp == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);*/
+	printf("%d\n", tmp->n);
 }

@@ -9,12 +9,9 @@ int data;
   */
 int main(int __attribute__ ((unused)) argc, char *argv[])
 {
-/*	char *lineptr;*/
 	size_t n = 0;
 	int line_no = 0;
 	char *token1, *token2;
-	/*FILE  *fptr;*/
-/*	stack_t *stack = malloc(sizeof(stack_t));*/
 	stack_t *stack = NULL;
 	instruction_t match[4] = {
 		{"push", push},
@@ -24,8 +21,6 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	};
 
 	arg_check(argv);
-/*	if (stack == NULL)
-		malloc_err();*/
 	globes.fptr = NULL;
 	globes.fptr = fopen(argv[1], "r");
 	file_err(globes.fptr, argv);
@@ -42,7 +37,6 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 				if (!isNumber(token2))
 					push_err(line_no);
 				data = atoi(token2);
-				/*printf("%d\n", data);*/
 			}
 			if (token2 == NULL && strcmp(token1, "push") == 0)
 				push_err(line_no);
@@ -84,23 +78,29 @@ void matcher(instruction_t *match, char *token, stack_t **stack, int line_no)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+  *free_stack - frees the stack of double linked list
+  *@stack: the top node of the stack
+  */
 void free_stack(stack_t *stack)
 {
-        stack_t *temp;
+	stack_t *temp;
 
-        while (stack != NULL)
-        {
-                temp = stack->next;
-                free(stack);
-                stack = temp;
-        }
+	while (stack != NULL)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
 }
-
+/**
+  *exit_free - frees the stack, close the file,  and exit
+  *@stack: the top node of the stack
+  */
 void exit_free(stack_t *stack)
 {
 	fclose(globes.fptr);
-        if (globes.lineptr != NULL)
-                free(globes.lineptr);
-        free_stack(stack);
+	if (globes.lineptr != NULL)
+		free(globes.lineptr);
+	free_stack(stack);
 }
