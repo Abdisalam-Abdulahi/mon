@@ -13,11 +13,12 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	int line_no = 0;
 	char *token1, *token2;
 	stack_t *stack = NULL;
-	instruction_t match[5] = {
+	instruction_t match[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
