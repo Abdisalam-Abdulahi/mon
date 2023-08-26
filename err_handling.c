@@ -5,7 +5,7 @@
   */
 void arg_check(char **argv)
 {
-	if (argv[1] == NULL)
+	if (argv[1] == NULL || argv[2] != NULL)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
