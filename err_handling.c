@@ -27,7 +27,6 @@ void file_err(FILE *file, char **argv)
 }
 /**
   *malloc_err - checks if malloc is returning error or not
-  *@ptr: the pointer to be checked
   */
 void malloc_err(void)
 {
