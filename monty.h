@@ -7,6 +7,19 @@
 #include<sys/types.h>
 #include <stdbool.h>
 #include <ctype.h>
+
+/**
+ * struct GlobalStruct - contains all globals
+ * @data: int for push
+ * @fm: file stream for monty file
+ * @lineptr: pointer to char sting allocated by getline function
+ */
+struct GlobalStruct
+{
+        FILE *fptr;
+        char *lineptr;
+} globes;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -49,5 +62,5 @@ void malloc_err(void);
 bool isNumber(char *string);
 void push_err(int lineNumber);
 void free_stack(stack_t *stack);
-void exit_free(stack_t *stack, char *lineptr);
+void exit_free(stack_t *stack);
 #endif

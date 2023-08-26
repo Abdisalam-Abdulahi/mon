@@ -9,11 +9,11 @@ int data;
   */
 int main(int __attribute__ ((unused)) argc, char *argv[])
 {
-	char *lineptr;
+/*	char *lineptr;*/
 	size_t n = 0;
 	int line_no = 0;
 	char *token1, *token2;
-	FILE  *fptr;
+	/*FILE  *fptr;*/
 /*	stack_t *stack = malloc(sizeof(stack_t));*/
 	stack_t *stack = NULL;
 	instruction_t match[4] = {
@@ -26,12 +26,14 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 	arg_check(argv);
 /*	if (stack == NULL)
 		malloc_err();*/
-	fptr = fopen(argv[1], "r");
-	file_err(fptr, argv);
-	while (getline(&lineptr, &n, fptr) != -1)
+	globes.fptr = NULL;
+	globes.fptr = fopen(argv[1], "r");
+	file_err(globes.fptr, argv);
+	globes.lineptr = NULL;
+	while (getline(&globes.lineptr, &n, globes.fptr) != -1)
 	{
 		line_no++;
-		token1 = strtok(lineptr, " \n\t\r");
+		token1 = strtok(globes.lineptr, " \n\t\r");
 		if (token1 != NULL)
 		{
 			token2 = strtok(NULL, " \n\t\r");
@@ -48,11 +50,10 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		if (token1 == NULL)
 			continue;
 		matcher(match, token1, &stack, line_no);
-		free(lineptr);
-		lineptr = NULL;
+		free(globes.lineptr);
+		globes.lineptr = NULL;
 	}
-	fclose(fptr);
-	exit_free(stack, lineptr);
+	exit_free(stack);
 	return (0);
 }
 
@@ -95,9 +96,10 @@ void free_stack(stack_t *stack)
         }
 }
 
-void exit_free(stack_t *stack, char *lineptr)
+void exit_free(stack_t *stack)
 {
-        if (lineptr != NULL)
-                free(lineptr);
+	fclose(globes.fptr);
+        if (globes.lineptr != NULL)
+                free(globes.lineptr);
         free_stack(stack);
 }
