@@ -6,7 +6,15 @@
   */
 void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 {
-	stack_t *temp = *stack;
+	        stack_t *tmp = *stack;
+
+        (void) line_number;
+        while (tmp != NULL)
+        {
+                printf("%d\n", tmp->n);
+                tmp = tmp->next;
+        }
+/*	stack_t *temp = *stack;
 
 	if (temp == NULL)
 	{
@@ -16,5 +24,5 @@ void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->prev;
-	}
+	}*/
 }

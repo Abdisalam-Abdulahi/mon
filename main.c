@@ -80,6 +80,7 @@ void matcher(instruction_t *match, char *token, stack_t **stack, int line_no)
 	if (match[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, token);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 }

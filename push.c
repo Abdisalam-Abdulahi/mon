@@ -6,7 +6,25 @@
   */
 void push(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 {
-	stack_t *temp = malloc(sizeof(stack_t));
+	        stack_t *tmp;
+
+        tmp = malloc(sizeof(stack_t)); /* not freed */
+        if (tmp == NULL)
+        {
+                fprintf(stderr, "Error: malloc failed");
+                exit_free(*stack);
+                exit(EXIT_FAILURE);
+        }
+        tmp->n = data;
+        tmp->prev = NULL;
+        tmp->next = NULL;
+        if (*stack != NULL)
+        {
+                tmp->next = *stack;
+                (*stack)->prev = tmp;
+        }
+        *stack = tmp;
+/*	stack_t *temp = malloc(sizeof(stack_t));
 	
 	if (temp == NULL)
 		malloc_err();
@@ -22,7 +40,7 @@ void push(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 		(*stack)->next = temp;
 		temp->prev = *stack;
 		*stack = temp;
-	}
+	}*/
 }
 /**
   *isNumber - checks if string is number
