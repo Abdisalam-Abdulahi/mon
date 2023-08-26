@@ -24,23 +24,7 @@ void push(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
                 (*stack)->prev = tmp;
         }
         *stack = tmp;
-/*	stack_t *temp = malloc(sizeof(stack_t));
-	
-	if (temp == NULL)
-		malloc_err();
-	temp->n = data;
-	if (*stack == NULL)
-	{
-		temp->next = NULL;
-		temp->prev = NULL;
-		(*stack) = temp;
-	}
-	else
-	{
-		(*stack)->next = temp;
-		temp->prev = *stack;
-		*stack = temp;
-	}*/
+
 }
 /**
   *isNumber - checks if string is number
@@ -53,6 +37,8 @@ bool isNumber(char *string)
 
 	for (i = 0; string[i] != '\000'; i++)
 	{
+		if (string[i] == '-')
+			continue;
 		if (isdigit(string[i]) == 0)
 			return (false);
 	}
