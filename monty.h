@@ -62,4 +62,5 @@ bool isNumber(char *string);
 void push_err(int lineNumber);
 void free_stack(stack_t *stack);
 void exit_free(stack_t *stack);
+void pop(stack_t **stack, unsigned int line_number);
 #endif
