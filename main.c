@@ -21,6 +21,7 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 

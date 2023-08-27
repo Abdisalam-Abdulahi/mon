@@ -40,6 +40,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(temp);
 }
+
 /**
   *nop - remove top element of the stack
   *@stack: top element
