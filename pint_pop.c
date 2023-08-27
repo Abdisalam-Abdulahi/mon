@@ -40,3 +40,20 @@ void pop(stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(temp);
 }
+/**
+  *nop - remove top element of the stack
+  *@stack: top element
+  *@line_number: line number
+  */
+void nop(__attribute__ ((unused)) stack_t **stack,
+		__attribute__ ((unused)) unsigned int line_number)
+{
+}
+
+
+
+
+
+
+
+
