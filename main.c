@@ -23,6 +23,7 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		{"nop", nop},
 		{"sub", sub},
 		{"div", _div},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 
