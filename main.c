@@ -24,6 +24,7 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
