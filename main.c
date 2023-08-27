@@ -19,6 +19,7 @@ int main(int __attribute__ ((unused)) argc, char *argv[])
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 
